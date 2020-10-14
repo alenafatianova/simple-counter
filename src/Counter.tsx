@@ -10,7 +10,7 @@ export default function CountUp(props:PropsType) {
 
 return (
         <div>
-           <div className={s.classCount}>
+        <div className={s.classCount}>
         <div>{props.title}</div>
         <Buttons />   
         </div>

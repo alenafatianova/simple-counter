@@ -1,35 +1,26 @@
-import React, {useState} from 'react'
-import s from './counter.module.scss'
+import React, { useState } from "react";
+import s from "./counter.module.scss";
 
 export default function Buttons() {
+  let [count, setCount] = useState(0);
 
-    let  [count, setCount] = useState(0);
+  let Inc = () => (count < 5 ? setCount(count + 1) : 0)
+  let reset = () => (count === 5 ? setCount(0) : '')
 
-    let Inc = () => {
-        if (count < 5 ) {
-            setCount(count+1);
-        }
-    }
-    
-    let reset = () => {
-        if (count === 5) {
-            setCount(0);
-        } 
-    }
+  return (
+    <div>
+      <div className={count === 5 ? s.disable : ""}>
+        <div className={s.count}>{count} </div>
 
-    return (
-        <div>
-            <div className={count === 5 ? s.disable : s.norm}> 
-            {count} 
-        <div>
-            <button 
-                onClick={Inc} 
-                className={count === 5 ? s.opacity : s.normOpacity} >inc</button>    
-            <button  
-                onClick={reset} 
-                className={count === 0 ? s.opacity : s.normOpacity  }>reset</button>
+        <div className={s.buttonInc}>
+          <button onClick={Inc} disabled={count === 5 ? true : false}>
+            inc
+          </button>
+          <button onClick={reset} disabled={count === 0 ? true : false}>
+            reset
+          </button>
         </div>
-        </div> 
-        </div> 
-    )      
+      </div>
+    </div>
+  );
 }
