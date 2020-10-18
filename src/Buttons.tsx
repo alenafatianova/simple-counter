@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import s from "./counter.module.scss";
+import s from './counter.module.scss';
 
 export default function Buttons() {
   let [count, setCount] = useState(0);
