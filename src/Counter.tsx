@@ -1,19 +1,30 @@
-import React from 'react'
-import s from './counter.module.scss'
-import Buttons from './Buttons'
+import React, { useState } from "react";
+import s from "./counter.module.scss";
+import Buttons from "./Buttons";
 
 type PropsType = {
-    title: string
-}
+  title: string;
+};
 
-export default function CountUp(props:PropsType) {
+export default function CountUp(props: PropsType) {
+  let [count, setCount] = useState(0);
 
-return (
-        <div>
-        <div className={s.classCount}>
+  let Inc = () => (count < 5 ? setCount(count + 1) : 0);
+  let reset = () => (count === 5 ? setCount(0) : "");
+
+  return (
+    <div>
+      <div className={s.classCount}>
         <div>{props.title}</div>
-        <Buttons />   
+        <div className={count === 5 ? s.disable : ""}>
+          <div className={s.count}>{count} </div>
+          
+          <Buttons 
+            Inc={Inc} 
+            count={count} 
+            reset={reset} />
         </div>
-        </div>
-    )
+      </div>
+    </div>
+  );
 }

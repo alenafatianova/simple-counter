@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       
     <CountUp title='Counter' />
-    <CounterSettings value={0} />
+    <CounterSettings />
     </div>
   );
 }
