@@ -1,28 +1,46 @@
-import React, { useState } from "react";
+import React from "react";
 import s from "./counter.module.scss";
-import Buttons from "./Buttons";
+import CounterSettingsButton from "./CounterSettingsButton";
 
 type PropsType = {
-  title: string;
+  title: string
+  maxValue: number
+  startValue: number
+  count: number
+  setCount: (startValue: number) => void
 };
 
 export default function CountUp(props: PropsType) {
-  let [count, setCount] = useState(0);
 
-  let Inc = () => (count < 5 ? setCount(count + 1) : 0);
-  let reset = () => (count === 5 ? setCount(0) : "");
+  let Inc = () => props.setCount(props.count + 1);
+  let reset = () => props.setCount(props.startValue);
 
   return (
     <div>
       <div className={s.classCount}>
         <div>{props.title}</div>
-        <div className={count === 5 ? s.disable : ""}>
-          <div className={s.count}>{count} </div>
-          
-          <Buttons 
+        <div className={props.count === props.maxValue ? s.disable : ""}>
+          <div className={s.count} >
+            {props.count } 
+            </div>
+          <CounterSettingsButton  
+            title={'inc'} 
+            onClickSet={Inc} 
+            disabled={props.count === props.maxValue} 
+            maxValue={props.maxValue}
+            startValue={props.startValue}
+            />
+          <CounterSettingsButton  
+            title={'reset'} 
+            onClickSet={reset} 
+            disabled={props.count === props.startValue} 
+            maxValue={props.maxValue}
+            startValue={props.startValue}
+            />
+          {/* <Buttons 
             Inc={Inc} 
-            count={count} 
-            reset={reset} />
+            count={props.startValue} 
+            reset={reset} /> */}
         </div>
       </div>
     </div>
