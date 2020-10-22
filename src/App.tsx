@@ -14,6 +14,8 @@ function App() {
     setCount(startValue)
     setStartValue(startValue)
     setMaxValue(maxValue)
+    localStorage.setItem('startValue', startValue.toString())
+    localStorage.setItem('maxValue', maxValue.toString())
   }
   return (
     <div className="App">
