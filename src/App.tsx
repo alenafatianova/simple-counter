@@ -6,9 +6,9 @@ import {CounterSettings} from './CounterSettings';
 
 
 function App() {
-
-  const [startValue, setStartValue] = useState<number>(0)
-  const [maxValue, setMaxValue] = useState<number> (5)
+  
+  const [startValue, setStartValue] = useState<number>(Number(localStorage.getItem('startValue')))
+  const [maxValue, setMaxValue] = useState<number> (Number(localStorage.getItem('maxValue')) || 5)
   let [count, setCount] = useState(startValue);
   const onClickSet = (startValue: number, maxValue: number) => {
     setCount(startValue)
