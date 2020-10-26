@@ -8,14 +8,24 @@ type CounterType  = {
     setStartValue: (startValue: number) => void
     setMaxValue: (maxValue: number) => void
     onClickSet: (startValue: number, maxValue: number) => void
+    setError: (error: string)=> void
 }
 
-export default function CounterSettings(props: CounterType) {
+export  function CounterSettings(props: CounterType) {
 
 const [startValue, setStartValue] = useState<number>(0)
 const [maxValue, setMaxValue] = useState<number>(5)
-const onChangeStart = (e: ChangeEvent<HTMLInputElement>) => setStartValue(Number(e.currentTarget.value))
-const onChangeMax = (e: ChangeEvent<HTMLInputElement>) => setMaxValue(Number(e.currentTarget.value))
+const isValid = (startValue: number, maxValue: number) => {
+    return startValue >= 0 && maxValue > startValue 
+}
+const onChangeStart = (e: ChangeEvent<HTMLInputElement>) => {
+    setStartValue(Number(e.currentTarget.value))
+    isValid(startValue, maxValue) ? props.setError('') : props.setError('Invalid input')
+}
+const onChangeMax = (e: ChangeEvent<HTMLInputElement>) => {
+    setMaxValue(Number(e.currentTarget.value))
+    isValid(startValue, maxValue) ? props.setError('') : props.setError('Invalid input')
+}
 
     return (
         <div className={s.wrapper}>
@@ -34,8 +44,10 @@ const onChangeMax = (e: ChangeEvent<HTMLInputElement>) => setMaxValue(Number(e.c
                         onChange={onChangeStart}
                         value={startValue}
                         type="number" 
-                        className={startValue >= 0 && startValue < maxValue ? s.inputDefault : s.error }/>
-                </div>
+                        className={startValue >= 0 && startValue < maxValue ? s.inputDefault : s.error }
+                        />
+                </div>  
+                
             </div>
             <CounterSettingsButton 
                 maxValue={maxValue}

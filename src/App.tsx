@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import Counter from './Counter'
+import {Counter} from './Counter'
 import './App.css';
-import CounterSettings from './CounterSettings';
+import {CounterSettings} from './CounterSettings';
 
 
 
@@ -17,15 +17,21 @@ function App() {
     localStorage.setItem('startValue', startValue.toString())
     localStorage.setItem('maxValue', maxValue.toString())
   }
+  const [error, setError] = useState('')
+
   return (
+    
     <div className="App">
     <Counter 
+      error={error}
       setCount={setCount}
       count={count}
       title='Counter' 
       maxValue={maxValue} 
       startValue={startValue} />
+
     <CounterSettings 
+      setError={setError}
       onClickSet={onClickSet}
       maxValue={maxValue} 
       startValue={startValue} 
