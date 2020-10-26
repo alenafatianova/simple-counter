@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import s from "./counter.module.scss";
 import CounterSettingsButton from "./CounterSettingsButton";
 
@@ -22,7 +22,7 @@ export function Counter(props: PropsType) {
       <div className={s.classCount}>
         <div>{props.title}</div>
         <div className={props.count === props.maxValue ? s.disable : ""}>
-          <div className={props.error ? s.error : s.count} >
+          <div className={props.error ? s.disable : ''} >
             {props.error ? props.error : props.count}
             </div>
 
