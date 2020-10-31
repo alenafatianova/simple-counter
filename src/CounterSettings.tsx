@@ -30,7 +30,7 @@ const onChangeMax = (e: ChangeEvent<HTMLInputElement>) => {
     return (
         <div className={s.wrapper}>
             <div className={s.screen}>
-                <div>
+                <div className={s.maxValue}>
                     <span>max value </span>
                     <input 
                     onChange={onChangeMax}
@@ -38,7 +38,7 @@ const onChangeMax = (e: ChangeEvent<HTMLInputElement>) => {
                     type="number" 
                     className={maxValue >= 0 && maxValue > startValue ? s.inputDefault : s.error  }  />
                 </div>
-                <div>
+                <div className={s.startValue}>
                     <span>start value</span>
                     <input
                         onChange={onChangeStart}

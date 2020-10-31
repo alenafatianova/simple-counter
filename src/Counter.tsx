@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./counter.module.scss";
 import CounterSettingsButton from "./CounterSettingsButton";
+import Button from '@material-ui/core/Button'
 
 type PropsType = {
   title: any
@@ -32,7 +33,7 @@ export function Counter(props: PropsType) {
             disabled={props.count === props.maxValue} 
             maxValue={props.maxValue}
             startValue={props.startValue}
-            />
+          /> 
           <CounterSettingsButton  
             title={'reset'} 
             onClickSet={reset} 
