@@ -41,10 +41,6 @@ export function Counter(props: PropsType) {
             maxValue={props.maxValue}
             startValue={props.startValue}
             />
-          {/* <Buttons 
-            Inc={Inc} 
-            count={props.startValue} 
-            reset={reset} /> */}
         </div>
       </div>
     </div>

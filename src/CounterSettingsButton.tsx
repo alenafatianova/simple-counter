@@ -1,6 +1,5 @@
 import React, { MouseEvent } from 'react'
 import s from './ButtonSettings.module.scss'
-import {Button} from '@material-ui/core'
 
 
 export type ButtonSettingType = {
@@ -15,14 +14,13 @@ export default function CounterSettingsButton(props: ButtonSettingType) {
     return (
         <div>
             <div className={s.setButton}>
-                <Button 
+                <button 
                     onClick={(e: MouseEvent<HTMLButtonElement>) => {
                     props.onClickSet(props.startValue,props.maxValue )}} 
                     disabled={props.disabled}
-                    variant={'contained'}
                     >
                     {props.title}
-                </Button>
+                </button>
             </div>
         </div>
     )
