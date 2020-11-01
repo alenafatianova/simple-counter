@@ -21,7 +21,7 @@ export function Counter(props: PropsType) {
   return (
     <div>
       <div className={s.classCount}>
-        <div>{props.title}</div>
+        <div className={s.counterTitle}>{props.title}</div>
         <div className={props.count === props.maxValue ? s.disable : ""}>
           <div className={props.error ? s.disable : ''} >
             {props.error ? props.error : props.count}

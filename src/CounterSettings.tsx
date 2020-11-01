@@ -2,6 +2,8 @@ import React, {useState, ChangeEvent} from 'react'
 import s from './CounterSettings.module.scss'
 import CounterSettingsButton from './CounterSettingsButton'
 
+
+
 type CounterType  = {
     maxValue: number
     startValue: number
@@ -32,11 +34,12 @@ const onChangeMax = (e: ChangeEvent<HTMLInputElement>) => {
             <div className={s.screen}>
                 <div className={s.maxValue}>
                     <span>max value </span>
-                    <input 
+                    <input
                     onChange={onChangeMax}
                     value={maxValue}
                     type="number" 
-                    className={maxValue >= 0 && maxValue > startValue ? s.inputDefault : s.error  }  />
+                    className={maxValue >= 0 && maxValue > startValue ? s.inputDefault : s.error  }  
+                    />
                 </div>
                 <div className={s.startValue}>
                     <span>start value</span>

@@ -8,7 +8,6 @@
     border-radius: 15px;
     font-size: 24px;
 }
-
 .screen {
     width: 330px;
     height: 170px;
@@ -51,4 +50,14 @@ button {
         background: rgb(168, 126, 207);
         cursor: pointer;
     }
+    &:disabled {
+        background: grey;
+    }
+}
+input {
+    background-color: rgb(37, 35, 35);
+    border: 2px solid blueviolet;
+    color: white;
+    font-size: 15px;
+    padding-left: 10px;
 }
