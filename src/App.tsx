@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import {Counter} from './Counter'
+import {Counter} from './Counter/Counter'
 import './App.css';
-import {CounterSettings} from './CounterSettings';
+import {CounterSettings} from './CounterSettings/CounterSettings';
 
 
 
-function App() {
+export function App() {
   
   const [startValue, setStartValue] = useState<number>(Number(localStorage.getItem('startValue')))
   const [maxValue, setMaxValue] = useState<number> (Number(localStorage.getItem('maxValue')) || 5)
@@ -42,4 +42,4 @@ function App() {
   );
 }
 
-export default App;
+

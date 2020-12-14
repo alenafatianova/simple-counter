@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./counter.module.scss";
-import CounterSettingsButton from "./CounterSettingsButton";
-import Button from '@material-ui/core/Button'
+import CounterSettingsButton from "../CounterButtons/CounterSettingsButton";
+
 
 type PropsType = {
   title: any
