@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./counter.module.scss";
 import CounterSettingsButton from "../CounterButtons/CounterSettingsButton";
-
+import { connect } from 'react-redux'
 
 type PropsType = {
   title: any
@@ -46,3 +46,4 @@ export function Counter(props: PropsType) {
     </div>
   );
 }
+

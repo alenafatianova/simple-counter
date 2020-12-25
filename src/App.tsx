@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {Counter} from './Counter/Counter'
 import './App.css';
 import {CounterSettings} from './CounterSettings/CounterSettings';
+import { CounterContainer } from './Counter/CounterContainer';
 
 
 
@@ -22,7 +22,7 @@ export function App() {
   return (
     
     <div className="App">
-    <Counter 
+    <CounterContainer
       error={error}
       setCount={setCount}
       count={count}
