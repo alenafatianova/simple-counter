@@ -1,4 +1,6 @@
 import {ACTIONS_TYPE} from './actions'
+import {StoreCounter} from './state'
+
 
 type CounterType = {
     title: string
@@ -11,17 +13,8 @@ export type CounterState = {
     counter: Array<CounterType>
 }
 
-export const intialCounter: CounterState = {
- counter: [
-    { title: 'Counter',
-     maxValue: 5,
-     startValue: 0, 
-     count: 50,
-     error: ''
-    }
- ]
-}
-export const counterReducer = (state: CounterState = intialCounter, action: any) => {
+
+export const counterReducer = (state: CounterState = StoreCounter, action: any) => {
     switch (action.type) {
         case ACTIONS_TYPE.INCREMENT_VALUE: {
             return {
@@ -35,7 +28,12 @@ export const counterReducer = (state: CounterState = intialCounter, action: any)
                  ...action.payload
              }
          }   
-            
+        case ACTIONS_TYPE.SET_VALUE: {
+            return {
+                ...state,
+                ...action.payload
+            }
+        } 
         default:
             return state;
     }

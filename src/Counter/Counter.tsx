@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./counter.module.scss";
-import CounterSettingsButton from "../CounterButtons/CounterSettingsButton";
-import { connect } from 'react-redux'
+import CounterButton from "../CounterButtons/CounterButton";
+
 
 type PropsType = {
   title: any
@@ -23,18 +23,15 @@ export function Counter(props: PropsType) {
       <div className={s.classCount}>
         <div className={s.counterTitle}>{props.title}</div>
         <div className={props.count === props.maxValue ? s.disable : ""}>
-          <div className={props.error ? s.disable : ''} >
-            {props.error ? props.error : props.count}
-            </div>
-
-          <CounterSettingsButton  
+         
+          <CounterButton  
             title={'inc'} 
             onClickSet={Inc} 
             disabled={props.count === props.maxValue} 
             maxValue={props.maxValue}
             startValue={props.startValue}
           /> 
-          <CounterSettingsButton  
+          <CounterButton  
             title={'reset'} 
             onClickSet={reset} 
             disabled={props.count === props.startValue} 

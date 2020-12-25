@@ -1,6 +1,6 @@
 import React, {useState, ChangeEvent} from 'react'
 import s from './CounterSettings.module.scss'
-import CounterSettingsButton from '../CounterButtons/CounterSettingsButton'
+import CounterSettingsButton from '../CounterButtons/CounterButton'
 
 
 

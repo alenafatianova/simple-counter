@@ -16,7 +16,7 @@ export default function CounterSettingsButton(props: ButtonSettingType) {
             <div className={s.setButton}>
                 <button 
                     onClick={(e: MouseEvent<HTMLButtonElement>) => {
-                    props.onClickSet(props.startValue,props.maxValue )}} 
+                    props.onClickSet(props.startValue, props.maxValue )}} 
                     disabled={props.disabled}
                     >
                     {props.title}
