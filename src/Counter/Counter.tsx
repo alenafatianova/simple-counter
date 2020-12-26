@@ -23,7 +23,10 @@ export function Counter(props: PropsType) {
       <div className={s.classCount}>
         <div className={s.counterTitle}>{props.title}</div>
         <div className={props.count === props.maxValue ? s.disable : ""}>
-         
+          <div className={props.error ? s.disable : ''} >
+            {props.error ? props.error : props.count}
+            </div>
+
           <CounterButton  
             title={'inc'} 
             onClickSet={Inc} 
@@ -43,4 +46,3 @@ export function Counter(props: PropsType) {
     </div>
   );
 }
-
