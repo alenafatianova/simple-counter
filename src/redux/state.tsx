@@ -6,4 +6,5 @@ export const reducers = combineReducers({
     counter: counterReducer
 })
 export const store = createStore(reducers)
+
 export type AppStateType = ReturnType<typeof reducers>

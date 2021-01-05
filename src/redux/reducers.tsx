@@ -1,4 +1,5 @@
-import { useDispatch as _useDispatch } from 'react-redux';
+import {  useDispatch as _useDispatch } from 'react-redux';
+
 
 export function useDispatch() {
     const dispatch = _useDispatch()
@@ -10,16 +11,17 @@ export enum ACTIONS_TYPE  {
     RESET_VALUE = 'RESET_VALUE',
     SET_START_VALUE = 'SET_START_VALUE',
     SET_MAX_VALUE = 'SET_MAX_VALUE',
+    SET_VALUE = 'SET_VALUE',
 }
 
 const initialCounterState = {
     title: '',
-    maxValue: 5,
-    startValue: 0,
+    maxValue: Number(localStorage.getItem('maxValue') || '5'),
+    startValue: Number(localStorage.getItem('startValue' || '0')),
     count: 0,
 }
 
-type InitialStateType = {
+export type InitialStateType = {
     maxValue: number
     startValue: number
     count: number
@@ -44,46 +46,57 @@ export type SetMaxValueAC = {
     maxValue: number
 }
 
+export type SetValueAC = {
+    type: ACTIONS_TYPE.SET_VALUE
+    maxValue: number
+    startValue: number
+}
 
-export type CounterActionsType =  IncrementValueAC | ResetValueAC | SetStartValueAC | SetMaxValueAC
+export type CounterActionsType =  IncrementValueAC | ResetValueAC | SetStartValueAC | SetMaxValueAC | SetValueAC
 
 
 export const counterReducer = (state: InitialStateType = initialCounterState, action: CounterActionsType) => {
     switch (action.type) {
         case ACTIONS_TYPE.INCREMENT_VALUE: {
             return {
-                ...state,
-                count: action.count + 1
+               ...state,
+                count: state.count + 1
             }
         }
+        case ACTIONS_TYPE.SET_VALUE: {
+            return {
+                ...state,
+                startValue: action.startValue,
+                maxValue: action.maxValue,
+                count: action.startValue
+            }
+        }
+            
+        
          case ACTIONS_TYPE.RESET_VALUE: {
              return {
                  ...state,
-                 count: 0
+                 count: state.startValue
              }
          }   
-        case ACTIONS_TYPE.SET_START_VALUE: {
-            return {
-                ...state,
-                startValue: action.startValue
-            }
-        } 
-        case ACTIONS_TYPE.SET_MAX_VALUE: {
-            return {
-                ...state,
-                maxValue: action.maxValue
-            }
-        }
+      
         default:
             return state;
     }
 }
 
-export const IncrementValueAC = (count: number) => ({type: ACTIONS_TYPE.INCREMENT_VALUE, count})
-export const ResetValueAC = () => ({type: ACTIONS_TYPE.RESET_VALUE})
-export const SetStartValueAC = (startValue: number) => ({type: ACTIONS_TYPE.SET_START_VALUE, startValue})
-export const SetMaxValueAC = (maxValue: number) => ({type: ACTIONS_TYPE.SET_MAX_VALUE, maxValue})
+export const IncrementValueAC = () => ({
+    type: ACTIONS_TYPE.INCREMENT_VALUE, 
+})
+
+export const ResetValueAC = () => ({
+    type: ACTIONS_TYPE.RESET_VALUE
+})
 
 
-
+export const SetValueAC = (startValue: number, maxValue: number) => ({
+    type: ACTIONS_TYPE.SET_VALUE,
+    startValue,
+    maxValue
+})
 
